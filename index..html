@@ -7,30 +7,33 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Movies Home</title>
-    <script src="main.js"></script>
+    <script src="assets/scripts/jquery-3.3.1.min.js"></script>
+    <script src="assets/scripts/main.js"></script>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/layoutStyles.css">
 </head>
-<body>
-<div id="mainBody" class="row">
-    <div id="mainContent" class="col-12">
-        <label>Movies Home</label>
-        <div class="col-12 toolbar">
-            <div class="searchPanel">
-                <label>search</label>
-            </div>
-            <div class="addPanel">
-                <label>add</label>
-            </div>
-            <div class="delPanel">
-                <label>del</label>
-            </div>
-            <div class="tools">
-                <img alt="Search Movie" src="assets/icons/search-movie-96.png">
-                <img alt="Add Movie" src="assets/icons/add-movie-96.png">
-                <img alt="Delete Movie" src="assets/icons/del-movie-96.png">
-            </div>
+<body  onload="init()">
+<div id="mainBody">
+    <div id="mainContent" class="row">
+        <div class="col-12">
+            <label>Movies Home</label>
         </div>
+        <div>
+            <div class="row tools">
+                <img class="toolIcon" alt="Search Movie" onclick="searchIconHandler()" src="assets/icons/search-movie-96.png">
+                <img class="toolIcon" alt="Add Movie" src="assets/icons/add-movie-96.png">
+                <img class="toolIcon" alt="Delete Movie" src="assets/icons/del-movie-96.png">
+            </div>
+                <div class="col-0 searchPanel toolInactive">
+                    <label>Search</label>
+                </div>
+                <div class="col-0 addPanel toolInactive">
+                    <label>Add</label>
+                </div>
+                <div class="col-0 delPanel toolInactive">
+                    <label>Del</label>
+                </div>
+            </div>
     </div>
 
 

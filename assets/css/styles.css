@@ -1,5 +1,6 @@
 body{
-    background: linear-gradient(to right top, #8192ac, #4ca5c2, #00b7b5, #3bc382, #9ac43c)
+    background: linear-gradient(to right top, #8192ac, #4ca5c2, #00b7b5, #3bc382, #9ac43c);
+    transition: all 0.9s;
 }
 #mainBody{
     margin-top: 10%;
@@ -18,6 +19,7 @@ body{
 .tools{
     border-radius: 10px;
     padding: 1%;
+
     /*background: #5336f38c;*/
 }
 
@@ -25,6 +27,20 @@ body{
     /*height: 32px;*/
     /*width: 32px;*/
 
-    margin-left: 10%;
     cursor: pointer;
 }
+.tools img + img {
+    margin-left: 10%;
+}
+
+
+.toolSet{
+    transition: 1s;
+    margin-left: -5% !important;
+    transform: matrix(0.5, 0, 0, 0.5, 0, -20);
+}
+/*
+
+.toolInactive{
+    width: 0;
+}*/
