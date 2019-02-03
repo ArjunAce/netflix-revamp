@@ -1,0 +1,55 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta ch    arset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Movies Home</title>
+    <script src="assets/scripts/jquery-3.3.1.min.js"></script>
+    <script src="assets/scripts/main.js"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/layoutStyles.css">
+</head>
+<body  onload="init()">
+<div id="mainBody">
+    <div id="mainContent" class="row">
+        <div class="col-12">
+            <label  onclick="func(this)">Movies Home</label>
+        </div>
+        <div>
+            <div class="row tools">
+                <img id="search" alt="Search Movie" onclick="actionClickHandler(this)" src="assets/icons/search-movie-96.png">
+                <img id="add" alt="Add Movie" onclick="actionClickHandler(this)" src="assets/icons/add-movie-96.png">
+                <img id="delete" alt="Delete Movie" onclick="actionClickHandler(this)" src="assets/icons/del-movie-96.png">
+                <div id="panelParent">
+                    <div  id="searchPanel" class="content" style="max-height: fit-content">
+                        <input class="customTextBox" name="searchBar" id="searchBar" placeholder="Enter search text here">
+                    </div>
+                    <div id="addPanel" class="content">
+                        <input class="customTextBox smallBox" name="titleInput" placeholder="Movie name">
+                        <input class="customTextBox smallBox" name="titleInput" placeholder="Movie year">
+                        <input class="customTextBox smallBox" name="titleInput" placeholder="Enter movie name">
+                        <input class="customButton" type="button" value="Add Movie">
+                    </div>
+                    <div id="deletePanel" class="content">
+                        <label>Hover over the movie poster to delete it</label>
+                    </div>
+                </div>
+            </div>
+            <div id="movieLibrary">
+                <div style="display: none;" class="row movieRow" id="dummyMovieRow">
+                    <div class="col-2 movieItem dummyMovieItem">
+                        <img src="assets/icons/nothing-found-96.png">
+                        <h5>Name</h5>
+                        <h6>2018</h6>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+
+</div>
+</body>
+</html>
