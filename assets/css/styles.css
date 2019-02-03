@@ -1,0 +1,140 @@
+body{
+    background: linear-gradient(to right top, #8192ac, #4ca5c2, #00b7b5, #3bc382, #9ac43c);
+    transition: all 0.9s;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+}
+#mainBody{
+    margin-top: 1%;
+    border: 1px solid green;
+    border-radius: 10px;
+}
+
+#mainContent{
+    border: 1px solid #001fff;
+    font-weight: bold;
+    text-align: center;
+    font-size: 2.5rem;
+    color: white;
+}
+
+.tools{
+    border-radius: 10px;
+    padding: 1%;
+
+    /*background: #5336f38c;*/
+}
+
+.tools img{
+    /*height: 32px;*/
+    /*width: 32px;*/
+
+    cursor: pointer;
+}
+.tools img + img {
+    margin-left: 10%;
+}
+
+
+.toolSet{
+    transition: 1s;
+    margin-left: -1% !important;
+    transform: matrix(0.5, 0, 0, 0.5, 0, -20);
+}
+
+.toolInactive{
+    display: none;
+}
+
+
+#toolContent {
+    widows: 0;
+    color: #fff;
+    transition: all 1.3s;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+#toolContent.hidden {
+    visibility: hidden;
+}
+
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.customTextBox{
+    font-size: 1.5rem;
+    border-radius: 1.5em;
+    border: none;
+    outline: none;
+    padding: 0 1rem;
+    box-shadow: inset 0 0 0 3px #fff, 0 0 0 4px #fff, 3px -3px 30px #1beabd, -3px 3px 30px #10abff;
+    width: 80%;
+    margin: 2%;
+}
+
+::placeholder {
+    color:#cbd0d5;
+}
+#panelParent{
+    border: 1px solid wheat;
+    border-radius: 10px;
+    padding: 1% 2%;
+}
+
+.smallBox{
+    width: 20%;
+}
+
+.customButton {
+    background-color: #337ab7;
+    color: #fff;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+.customButton:hover{
+    color: #337ab7;
+    background-color: #fff;
+}
+
+#deletePanel label{
+    font-size: 1.5rem;
+    padding: 2% 0;
+    display: block;
+}
+
+#movieLibrary{
+    font-size: 2rem;
+    margin: 0 10%;
+}
+
+.movieItem{
+    width: 20% !important;
+    padding: 1% !important;
+    min-width: 150px;
+}
+
+.movieItem h5,.movieItem h6{
+    margin: 0;
+    font-size: 1.2rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.movieItem img{
+color: red;
+}
+
+.movieRow + .movieRow {
+    margin-top: 2%;
+}
