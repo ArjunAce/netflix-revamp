@@ -36,11 +36,32 @@ body{
 
 .toolSet{
     transition: 1s;
-    margin-left: -5% !important;
+    margin-left: -1% !important;
     transform: matrix(0.5, 0, 0, 0.5, 0, -20);
 }
-/*
 
 .toolInactive{
-    width: 0;
-}*/
+    display: none;
+}
+
+
+#toolContent {
+    widows: 0;
+    color: #fff;
+    transition: all 1.3s;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+#toolContent.hidden {
+    visibility: hidden;
+}
+
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #433090;
+}
