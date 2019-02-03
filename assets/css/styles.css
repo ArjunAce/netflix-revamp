@@ -63,5 +63,24 @@ body{
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
-    background-color: #433090;
+}
+
+.customSearchBar{
+    font-size: 1.5rem;
+    border-radius: 1.5em;
+    border: none;
+    outline: none;
+    padding: 0 1rem;
+    box-shadow: inset 0 0 0 3px #fff, 0 0 0 4px #fff, 3px -3px 30px #1beabd, -3px 3px 30px #10abff;
+    width: 80%;
+    margin: 2%;
+}
+
+::placeholder {
+    color:#cbd0d5;
+}
+#panelParent{
+    min-height:40%;
+    border: 1px solid wheat;
+    border-radius: 10px;
 }
