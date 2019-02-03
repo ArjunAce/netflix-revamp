@@ -127,16 +127,16 @@ function func() {
             a = data;
             var movieLibraryElement = $("#movieLibrary")[0];
             // var dummyMovieRowElement = $("#dummyMovieRow")[0];
-            // var dummyMovieItemElement = $("#dummyMovieItem")[0];
+            // var dummyMovieItemElement = $(".dummyMovieItem")[0];
             for (i = 0; i < a.length; i++) {
                 if(i%5 == 0){
                     newMovieRow = $("#dummyMovieRow").clone()[0];
                     newMovieRow.classList.add('realClass');
                     newMovieRow.style.display = 'block';
                     movieLibraryElement.appendChild(newMovieRow);
-                    newMovieItem = $(".realClass #dummyMovieItem")[i];
+                    newMovieItem = $(".realClass .dummyMovieItem")[i];
                 } else{
-                    newMovieItem = $("#dummyMovieItem").clone()[0];
+                    newMovieItem = $(".dummyMovieItem").clone()[0];
                 }
                 // newMovieItem.children[0].innerText = a[i].poster_path;
                 newMovieItem.children[1].innerText = a[i].original_title;

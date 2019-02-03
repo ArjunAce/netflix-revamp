@@ -1,6 +1,7 @@
 body{
     background: linear-gradient(to right top, #8192ac, #4ca5c2, #00b7b5, #3bc382, #9ac43c);
     transition: all 0.9s;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
 }
 #mainBody{
     margin-top: 1%;
@@ -113,8 +114,23 @@ body{
 
 #movieLibrary{
     font-size: 2rem;
+    margin: 0 10%;
+}
+
+.movieItem{
+    width: 20% !important;
+    padding: 1% !important;
 }
 
 .movieItem h5,.movieItem h6{
     margin: 0;
+    font-size: 1.2rem;
+}
+
+.movieItem h6{
+
+}
+
+.movieRow + .movieRow {
+    margin-top: 2%;
 }
