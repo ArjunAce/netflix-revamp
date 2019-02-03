@@ -1,0 +1,11 @@
+#mainBody{
+    margin-top: 10%;
+    border: 1px solid green;
+    border-radius: 10px;
+}
+
+#mainContent{
+    color: blue;
+    text-align: center;
+    font-size: 1.5rem;
+}
