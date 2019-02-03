@@ -129,7 +129,7 @@ function func() {
             // var dummyMovieRowElement = $("#dummyMovieRow")[0];
             // var dummyMovieItemElement = $(".dummyMovieItem")[0];
             for (i = 0; i < a.length; i++) {
-                if(i%5 == 0){
+                if(i%10 == 0){
                     newMovieRow = $("#dummyMovieRow").clone()[0];
                     newMovieRow.classList.add('realClass');
                     newMovieRow.style.display = 'block';

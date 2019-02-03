@@ -120,11 +120,15 @@ body{
 .movieItem{
     width: 20% !important;
     padding: 1% !important;
+    min-width: 150px;
 }
 
 .movieItem h5,.movieItem h6{
     margin: 0;
     font-size: 1.2rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .movieItem h6{
