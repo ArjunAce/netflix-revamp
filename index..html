@@ -16,11 +16,10 @@
 <div id="mainBody">
     <div id="mainContent" class="row">
         <div class="col-12">
-            <label>Movies Home</label>
+            <label  onclick="func(this)">Movies Home</label>
         </div>
         <div>
             <div class="row tools">
-
                 <img id="search" alt="Search Movie" onclick="actionClickHandler(this)" src="assets/icons/search-movie-96.png">
                 <img id="add" alt="Add Movie" onclick="actionClickHandler(this)" src="assets/icons/add-movie-96.png">
                 <img id="delete" alt="Delete Movie" onclick="actionClickHandler(this)" src="assets/icons/del-movie-96.png">
@@ -39,6 +38,14 @@
                     </div>
                 </div>
             </div>
+            <div id="movieLibrary">
+                <div style="display: none;" class="row movieRow" id="dummyMovieRow">
+                    <div class="col-2 movieItem" id="dummyMovieItem">
+                        <img src="assets/icons/nothing-found-96.png">
+                        <h5>Name</h5>
+                        <h6>2018</h6>
+                    </div>
+                </div>
         </div>
     </div>
 

@@ -3,7 +3,7 @@ body{
     transition: all 0.9s;
 }
 #mainBody{
-    margin-top: 10%;
+    margin-top: 1%;
     border: 1px solid green;
     border-radius: 10px;
 }
@@ -109,4 +109,12 @@ body{
     font-size: 1.5rem;
     padding: 2% 0;
     display: block;
+}
+
+#movieLibrary{
+    font-size: 2rem;
+}
+
+.movieItem h5,.movieItem h6{
+    margin: 0;
 }
