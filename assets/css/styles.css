@@ -131,8 +131,8 @@ body{
     overflow: hidden;
 }
 
-.movieItem h6{
-
+.movieItem img{
+color: red;
 }
 
 .movieRow + .movieRow {

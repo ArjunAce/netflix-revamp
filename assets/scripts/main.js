@@ -149,6 +149,10 @@ function func() {
     // xhttp.open("GET", url, true);
     // xhttp.send();
 
+    $(".movieItem img").hover(function () {
+        var a = $(this);
+        $(this)[0].setAttribute('src', 'assets/icons/trash-96.png');
+    });
 
 }
 
