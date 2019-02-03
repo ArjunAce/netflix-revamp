@@ -1,16 +1,23 @@
 function init(){
-    // alert('zxc');
+    actionClickHandler({id: 'search'});
 }
 
 function actionClickHandler(e){
+    var i, selectedPanelId, panelReference, parentReference;
     var iconSet = $(".tools img");
-    for (var i = 0; i < iconSet.length; i++) {
-        // if(iconSet[i].id !== e.id){
-            var selectedPanelId = '#' + iconSet[i].id  + 'Panel';
-            var panelReference = $(selectedPanelId)[0];
+    for (i = 0; i < iconSet.length; i++) {
+            selectedPanelId = '#' + iconSet[i].id  + 'Panel';
+            panelReference = $(selectedPanelId)[0];
+            if(!panelReference)
+                return;
             if (iconSet[i].id !== e.id){
                 panelReference.style.maxHeight = null;
             } else {
+                panelReference.parentElement.removeChild(panelReference);
+                parentReference = $('#panelParent')[0];
+                if(!parentReference)
+                    return;
+                parentReference.appendChild(panelReference);
                 panelReference.style.maxHeight = panelReference.scrollHeight + "px";
             }
         // }
