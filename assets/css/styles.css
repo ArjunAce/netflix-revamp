@@ -62,7 +62,7 @@ body{
     padding: 0 18px;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.2s ease-out;
+    transition: max-height 0.3s ease-out;
 }
 
 .customTextBox{
@@ -90,8 +90,8 @@ body{
 }
 
 .customButton {
-    background-color: #fff;
-    color: #337ab7;
+    background-color: #337ab7;
+    color: #fff;
     vertical-align: middle;
     cursor: pointer;
     border: 1px solid transparent;
@@ -101,10 +101,12 @@ body{
 }
 
 .customButton:hover{
-    color: #fff;
-    background-color: #337ab7;
+    color: #337ab7;
+    background-color: #fff;
 }
 
 #deletePanel label{
-    font-size: 2.5rem;
+    font-size: 1.5rem;
+    padding: 2% 0;
+    display: block;
 }
