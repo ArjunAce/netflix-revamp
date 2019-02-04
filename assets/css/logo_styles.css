@@ -52,3 +52,21 @@
     border-bottom-color: #282828;
     border-right-color: #282828;
 }
+
+
+@media screen and (max-width: 500px) {
+    .logo {
+        font: 50px 'Arial Narrow', sans-serif;
+        letter-spacing: -4px;
+        transition: 1s  ;
+    }
+
+    .logo span:before, .logo span:after {
+        border: 20px solid transparent;
+    }
+
+    .logo .secondary:after {
+        left: -20px;
+        bottom: 10px;
+    }
+}
