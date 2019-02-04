@@ -174,7 +174,7 @@ function attachHoverProperties() {
 }
 
 function searchKeyUpHandler() {
-    var input, filterText, i;
+    var input, filterText, i, noResults = true;
     input = $("#searchBar")[0];
     filterText = input.value.toLowerCase().trim();
     var movieItems = $(".realClass .movieItem");
@@ -182,9 +182,15 @@ function searchKeyUpHandler() {
         var currentMovieName = $(movieItems[i]).find('.movieName')[0].innerText;
         if (currentMovieName.toLowerCase().indexOf(filterText) > -1) {
             movieItems[i].style.display = "";
+            noResults = false;
         } else {
             movieItems[i].style.display = "none";
         }
+    }
+    if(noResults){
+        $("#nothingToShow").css('display', 'block');
+    } else {
+        $("#nothingToShow").css('display', 'none');
     }
 }
 
