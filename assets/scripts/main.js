@@ -72,13 +72,14 @@ var data = [
 ];
 var posterSrc = '';
 var actionMode = 'search';
-var imageData;
+var imageData = '';
 
 
 function init(){
     actionClickHandler({id: actionMode});
     // getMovieData();
-    $('input').focus(function(){
+    $('#addPanel input.textBoxStyleMinimal').focus(function(){
+        $(this)[0].value = '';
         $(this).data('placeholder', $(this).attr('placeholder')).attr('placeholder','');
     }).blur(function(){
         $(this).attr('placeholder',$(this).data('placeholder'));
@@ -206,7 +207,7 @@ function fileUploadHandler(){
         $($('#uploadPhotoLabel')[0]).data('placeholder', labelText);
         setImageData(files[0]);
     } else {
-        imageData = undefined;
+        imageData = '';
     }
     $($('#uploadPhotoLabel')[0]).attr('placeholder', labelText).data('placeholder', labelText);
 }
@@ -234,6 +235,17 @@ function addMovieHandler(e) {
         $('#newMovieYear')[0].value = '';
         $('#uploadPhoto')[0].value = '';
         fileUploadHandler();
+    } else {
+        if(imageData.indexOf('data:image') !== 0){
+            $($('#uploadPhotoLabel')[0]).data('placeholder', 'Invalid file type');
+            $('#uploadPhoto')[0].value = '';
+        }
+        if(!newMovieNameValue){
+            $('#newMovieName')[0].value = 'Invalid Name';
+        }
+        if(!isValidYear){
+            $('#newMovieYear')[0].value = 'Invalid Date';
+        }
     }
 }
 
