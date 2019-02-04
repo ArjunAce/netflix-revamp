@@ -151,12 +151,14 @@ function attachHoverProperties() {
             return;
         var a = $(this)[0];
         posterSrc = a.attributes.src.value;
-        a.setAttribute('src', 'assets/icons/trash-185_new.png');
+        // a.setAttribute('src', 'assets/icons/trash-185_new.png');
+        $(a).css('filter', 'blur(2px)');
     }, function () {
         if (actionMode !== 'delete')
             return;
         var a = $(this)[0];
-        a.setAttribute('src', posterSrc);
+        $(a).css('filter', 'none');
+        // a.setAttribute('src', posterSrc);
     });
 }
 
