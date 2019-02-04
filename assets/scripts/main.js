@@ -192,3 +192,13 @@ function deleteMovie(e) {
     xhttp.open("DELETE", url, true);
     xhttp.send();
 }
+
+function fileUploadHandler(){
+    var fileName = $('#uploadPhoto')[0].files[0].name;
+    $($('#uploadPhotoLabel')[0]).attr('placeholder', fileName);
+
+}
+
+function openFileUploadDialog(){
+    $('#uploadPhoto').trigger('click');
+}
