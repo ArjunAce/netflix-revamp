@@ -1,7 +1,11 @@
+html{
+    height: 100%;
+}
 body{
     background: linear-gradient(to right top, #8192ac, #4ca5c2, #00b7b5, #3bc382, #9ac43c);
     transition: all 0.9s;
     font-family: 'Source Sans Pro', Arial, sans-serif;
+    min-width: 380px;
 }
 #mainBody{
     margin-top: 1%;
@@ -32,7 +36,7 @@ body{
 }
 
 .tools img + img {
-    margin-left: 10%;
+    margin-left: 5%;
 }
 
 
@@ -61,13 +65,14 @@ body{
 }
 
 .content {
-    padding: 0 18px;
+    padding: 0px 10px;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
 }
 
 .customTextBox{
+    text-align: center;
     font-size: 1.5rem;
     border-radius: 1.5em;
     border: none;
@@ -84,7 +89,9 @@ body{
 #panelParent{
     border: 1px solid wheat;
     border-radius: 10px;
-    padding: 1% 2%;
+    /*padding: 1% 2%;*/
+    margin: 1% 2%;
+
 }
 
 .smallBox{
@@ -92,6 +99,7 @@ body{
 }
 
 .customButton {
+    text-align: center;
     background-color: #337ab7;
     color: #fff;
     vertical-align: middle;
@@ -108,7 +116,7 @@ body{
 }
 
 #deletePanel label{
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     padding: 2% 0;
     display: block;
 }
@@ -144,6 +152,27 @@ body{
 
 
 @media screen and (max-width: 380px) {
+    .content {
+        padding: 0;
+    }
+
+    .customTextBox {
+        font-size: 1.2rem;
+    }
+
+    #deletePanel label {
+        font-size: 1.2rem;
+        padding: 2% 15%;
+    }
+
+    .smallBox {
+        font-size: 1rem;
+        padding: 0 0.2rem;
+    }
+
+    .customButton {
+        background-color: #337ab7;
+    }
     .tools img{
         transition: 1s;
         transform: matrix(0.5, 0, 0, 0.5, 0, 0);
@@ -152,13 +181,14 @@ body{
     .tools img + img {
         margin-left: -5% !important;
     }
+
+
 }
 
 @media screen and (min-width: 1240px) {
     .tools img{
         transition: 1s;
-
-        transform: matrix(1.5, 0, 0, 1.5, 0, 0);
+        transform: matrix(1.2, 0, 0, 1.2, 0, 0);
     }
 
     .tools img + img {
