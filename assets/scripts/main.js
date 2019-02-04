@@ -141,9 +141,9 @@ function func() {
                 } else{
                     newMovieItem = $(".dummyMovieItem").clone()[0];
                 }
-                newMovieItem.children[0].setAttribute('src', "https://image.tmdb.org/t/p/w185" + a[i].poster_path);
-                newMovieItem.children[1].innerText = a[i].original_title;
-                newMovieItem.children[2].innerText = a[i].release_date.substring(0, 4);
+                $(newMovieItem).find('img')[0].setAttribute('src', "https://image.tmdb.org/t/p/w185" + a[i].poster_path);
+                $(newMovieItem).find('.movieName')[0].innerText = a[i].original_title;
+                $(newMovieItem).find('.movieYear')[0].innerText = a[i].release_date.substring(0, 4);
                 newMovieRow.appendChild(newMovieItem);
             }
         // }
