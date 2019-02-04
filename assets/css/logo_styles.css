@@ -1,5 +1,5 @@
 .logo {
-    font: 12vw 'Arial Narrow', sans-serif;
+    font: 100px 'Arial Narrow', sans-serif;
     letter-spacing: -4px;
     transition: 0s all !important;
 }
@@ -15,4 +15,19 @@
 
 .logo .primary {
     color: #dc006c;
+}
+
+
+@media screen and (max-width: 1240px) {
+    .logo {
+        font-size: 8vw;
+    }
+}
+
+
+@media screen and (max-width: 380px) {
+    .logo {
+        font-size: 2rem;
+        letter-spacing: -2px;
+    }
 }
