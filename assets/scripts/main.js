@@ -71,18 +71,28 @@ var data = [
     }
 ];
 var posterSrc = '';
-var actionMode;
+var actionMode = 'search';
+var imageData = '';
+
 
 function init(){
-    actionClickHandler({id: 'search'});
-    // getMovieData();
-    $('input').focus(function(){
+    actionClickHandler({id: actionMode});
+    //Actual call to server
+    getMovieData();
+    //For Mock data
+    /*appendMovieItems(data);
+    attachHoverProperties();*/
+
+
+    $('#addPanel input.textBoxStyleMinimal').focus(function(){
+        $(this)[0].value = '';
         $(this).data('placeholder', $(this).attr('placeholder')).attr('placeholder','');
     }).blur(function(){
         $(this).attr('placeholder',$(this).data('placeholder'));
     });
-    appendMovieItems(data);
-    attachHoverProperties();
+    $( window ).resize(function() {
+        actionClickHandler({id: actionMode});
+    });
 }
 
 function actionClickHandler(e){
@@ -163,7 +173,7 @@ function attachHoverProperties() {
     });
 }
 
-function onKeyUpHandler() {
+function searchKeyUpHandler() {
     var input, filterText, i;
     input = $("#searchBar")[0];
     filterText = input.value.toLowerCase().trim();
@@ -191,4 +201,85 @@ function deleteMovie(e) {
     var url = 'https://jsonplaceholder.typicode.com/posts/' + $(e).data('index');
     xhttp.open("DELETE", url, true);
     xhttp.send();
+}
+
+function fileUploadHandler(){
+    var labelText = 'No image selected';
+    var files = $('#uploadPhoto')[0].files;
+    if(files.length !== 0) {
+        labelText = files[0].name;
+        $($('#uploadPhotoLabel')[0]).data('placeholder', labelText);
+        setImageData(files[0]);
+    } else {
+        imageData = '';
+    }
+    $($('#uploadPhotoLabel')[0]).attr('placeholder', labelText).data('placeholder', labelText);
+}
+
+function openFileUploadDialog(){
+    $('#uploadPhoto').trigger('click');
+}
+
+function setImageData(file) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        imageData = e.target.result;
+    };
+    reader.readAsDataURL(file);
+}
+
+function addMovieHandler(e) {
+    var  newMovieNameValue, isValidYear;
+    newMovieNameValue = $('#newMovieName')[0].value.trim();
+    isValidYear = getIsValidYear($('#newMovieYear')[0]);
+    if(imageData.indexOf('data:image') === 0  && newMovieNameValue && isValidYear){
+        postMovie(newMovieNameValue, isValidYear);
+    } else {
+        if(imageData.indexOf('data:image') !== 0){
+            $($('#uploadPhotoLabel')[0]).data('placeholder', 'Invalid file type');
+            $('#uploadPhoto')[0].value = '';
+        }
+        if(!newMovieNameValue){
+            $('#newMovieName')[0].value = 'Invalid Name';
+        }
+        if(!isValidYear){
+            $('#newMovieYear')[0].value = 'Invalid Date';
+        }
+    }
+}
+
+function getIsValidYear(e) {
+    var regexForYear = new RegExp('^0*(19[0-8][0-9]|199[0-9]|200[0-9]|201[0-9])$');
+    return e.value.match(regexForYear);
+}
+
+function postMovie(newMovieNameValue, isValidYear) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 201) {
+            createNodeAndAppend(imageData, newMovieNameValue, isValidYear[0]);
+            attachHoverProperties();
+            $('#newMovieName')[0].value = '';
+            $('#newMovieYear')[0].value = '';
+            $('#uploadPhoto')[0].value = '';
+            fileUploadHandler();
+        }
+    };
+    var url = 'https://jsonplaceholder.typicode.com/posts/';
+    var body = {
+        posterSrc: imageData,
+        movieName: newMovieNameValue,
+        movieYear: isValidYear[0]
+    };
+    xhttp.open("POST", url, true);
+    xhttp.send(JSON.stringify(body));
+}
+
+function createNodeAndAppend(imageData, newMovieNameValue, yearOfRelease) {
+    var newMovieItem = $(".dummyMovieItem").clone()[0];
+    $(newMovieItem).find('img')[0].setAttribute('src', imageData);
+    $($(newMovieItem).find('img')[0]).data('index', $(".realClass .dummyMovieItem").length + 1);
+    $(newMovieItem).find('.movieName')[0].innerText = newMovieNameValue;
+    $(newMovieItem).find('.movieYear')[0].innerText = yearOfRelease;
+    $('.realClass')[0].appendChild(newMovieItem);
 }
