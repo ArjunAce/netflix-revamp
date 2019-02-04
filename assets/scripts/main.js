@@ -224,8 +224,13 @@ function addMovieHandler(e) {
     var  newMovieNameValue, isValidYear;
     newMovieNameValue = $('#newMovieName')[0].value.trim();
     isValidYear = getIsValidYear($('#newMovieYear')[0]);
-    if(imageData && newMovieNameValue && isValidYear){
+    if(imageData.indexOf('data:image') === 0  && newMovieNameValue && isValidYear){
         createNodeAndAppend(imageData, newMovieNameValue, isValidYear[0]);
+        attachHoverProperties();
+        $('#newMovieName')[0].value = '';
+        $('#newMovieYear')[0].value = '';
+        $('#uploadPhoto')[0].value = '';
+        fileUploadHandler();
     }
 }
 
@@ -234,6 +239,11 @@ function getIsValidYear(e) {
     return e.value.match(regexForYear);
 }
 
-function createNodeAndAppend(imageData, newMovieNameValue, isValidYear) {
-
+function createNodeAndAppend(imageData, newMovieNameValue, yearOfRelease) {
+    var newMovieItem = $(".dummyMovieItem").clone()[0];
+    $(newMovieItem).find('img')[0].setAttribute('src', imageData);
+    $($(newMovieItem).find('img')[0]).data('index', $(".realClass .dummyMovieItem").length + 1);
+    $(newMovieItem).find('.movieName')[0].innerText = newMovieNameValue;
+    $(newMovieItem).find('.movieYear')[0].innerText = yearOfRelease;
+    $('.realClass')[0].appendChild(newMovieItem);
 }
