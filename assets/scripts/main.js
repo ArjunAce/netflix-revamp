@@ -213,3 +213,18 @@ function func1() {
     });
 
 }
+
+function onKeyUpHandler() {
+    var input, filterText, i;
+    input = $("#searchBar")[0];
+    filterText = input.value.toLowerCase().trim();
+    var movieItems = $(".realClass .movieItem");
+    for (i = 0; i < movieItems.length; i++) {
+        var currentMovieName = $(movieItems[i]).find('.movieName')[0].innerText;
+        if (currentMovieName.toLowerCase().indexOf(filterText) > -1) {
+            movieItems[i].style.display = "";
+        } else {
+            movieItems[i].style.display = "none";
+        }
+    }
+}

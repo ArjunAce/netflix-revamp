@@ -1,3 +1,6 @@
+html{
+    height: 100%;
+}
 body{
     background: linear-gradient(to right top, #8192ac, #4ca5c2, #00b7b5, #3bc382, #9ac43c);
     transition: all 0.9s;
@@ -69,6 +72,7 @@ body{
 }
 
 .customTextBox{
+    text-align: center;
     font-size: 1.5rem;
     border-radius: 1.5em;
     border: none;
