@@ -157,7 +157,7 @@ function func() {
             return;
         var a = $(this)[0];
         posterSrc = a.attributes.src.value;
-        a.setAttribute('src', 'assets/icons/trash-96.png');
+        a.setAttribute('src', 'assets/icons/trash-185_new.png');
     }, function () {
         if (actionMode !== 'delete')
             return;
