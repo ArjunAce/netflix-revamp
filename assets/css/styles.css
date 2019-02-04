@@ -202,6 +202,20 @@ body{
     margin-top: 2%;
 }
 
+#nothingToShow #errorText {
+    color: #ffffff22;
+    font-size: 38px;
+    font-weight: 400;
+    margin: 0;
+}
+
+#nothingToShow img{
+    width: 14rem;
+}
+
+#nothingToShow .ool-12{
+    padding: 0 !important;
+}
 
 @media screen and (max-width: 1240px) {
     .tools img{
@@ -212,8 +226,12 @@ body{
         font-size: 1.2rem;
     }
 
-    .textBoxStyleMinimal, .customButtonMinimal, #deletePanel label {
+    .textBoxStyleMinimal, .customButtonMinimal, #deletePanel label, #nothingToShow #errorText {
         font-size: 3vw;
+    }
+
+    #nothingToShow img{
+        width: 18vw;
     }
 }
 
