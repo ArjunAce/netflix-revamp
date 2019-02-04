@@ -72,6 +72,8 @@ var data = [
 ];
 var posterSrc = '';
 var actionMode;
+var imageData;
+
 
 function init(){
     actionClickHandler({id: 'search'});
@@ -163,7 +165,7 @@ function attachHoverProperties() {
     });
 }
 
-function onKeyUpHandler() {
+function searchKeyUpHandler() {
     var input, filterText, i;
     input = $("#searchBar")[0];
     filterText = input.value.toLowerCase().trim();
@@ -195,9 +197,13 @@ function deleteMovie(e) {
 
 function fileUploadHandler(){
     var labelText = 'No image selected';
-    if($('#uploadPhoto')[0].files.length !== 0) {
-        labelText = $('#uploadPhoto')[0].files[0].name;
+    var files = $('#uploadPhoto')[0].files;
+    if(files.length !== 0) {
+        labelText = files[0].name;
         $($('#uploadPhotoLabel')[0]).data('placeholder', labelText);
+        setImageData(files[0]);
+    } else {
+        imageData = undefined;
     }
     $($('#uploadPhotoLabel')[0]).attr('placeholder', labelText).data('placeholder', labelText);
 }
@@ -206,10 +212,28 @@ function openFileUploadDialog(){
     $('#uploadPhoto').trigger('click');
 }
 
-function getImageData(file) {
+function setImageData(file) {
     var reader = new FileReader();
     reader.onload = function (e) {
-        return e.target.result;
+        imageData = e.target.result;
     };
     reader.readAsDataURL(file);
-};
+}
+
+function addMovieHandler(e) {
+    var  newMovieNameValue, isValidYear;
+    newMovieNameValue = $('#newMovieName')[0].value.trim();
+    isValidYear = getIsValidYear($('#newMovieYear')[0]);
+    if(imageData && newMovieNameValue && isValidYear){
+        createNodeAndAppend(imageData, newMovieNameValue, isValidYear[0]);
+    }
+}
+
+function getIsValidYear(e) {
+    var regexForYear = new RegExp('^0*(19[0-8][0-9]|199[0-9]|200[0-9]|201[0-9])$');
+    return e.value.match(regexForYear);
+}
+
+function createNodeAndAppend(imageData, newMovieNameValue, isValidYear) {
+
+}
