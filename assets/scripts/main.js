@@ -70,12 +70,15 @@ var data = [
         "release_date": "2019-01-25"
     }
 ];
+var posterSrc = '';
+var actionMode;
 
 function init(){
     actionClickHandler({id: 'search'});
 }
 
 function actionClickHandler(e){
+    actionMode = e.id;
     var i, selectedPanelId, panelReference, parentReference;
     var iconSet = $(".tools img");
     for (i = 0; i < iconSet.length; i++) {
@@ -150,8 +153,16 @@ function func() {
     // xhttp.send();
 
     $(".movieItem img").hover(function () {
-        var a = $(this);
-        $(this)[0].setAttribute('src', 'assets/icons/trash-96.png');
+        if (actionMode !== 'delete')
+            return;
+        var a = $(this)[0];
+        posterSrc = a.attributes.src.value;
+        a.setAttribute('src', 'assets/icons/trash-96.png');
+    }, function () {
+        if (actionMode !== 'delete')
+            return;
+        var a = $(this)[0];
+        a.setAttribute('src', posterSrc);
     });
 
 }
