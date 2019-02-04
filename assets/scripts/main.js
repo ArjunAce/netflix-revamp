@@ -139,6 +139,7 @@ function appendMovieItems(responseData) {
             newMovieItem = $(".dummyMovieItem").clone()[0];
         }
         $(newMovieItem).find('img')[0].setAttribute('src', "https://image.tmdb.org/t/p/w185" + responseData[i].poster_path);
+        $($(newMovieItem).find('img')[0]).data('index', i);
         $(newMovieItem).find('.movieName')[0].innerText = responseData[i].original_title;
         $(newMovieItem).find('.movieYear')[0].innerText = responseData[i].release_date.substring(0, 4);
         newMovieRow.appendChild(newMovieItem);
@@ -175,4 +176,19 @@ function onKeyUpHandler() {
             movieItems[i].style.display = "none";
         }
     }
+}
+
+function deleteMovie(e) {
+    if (actionMode !== 'delete')
+        return;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            $($(e).parent()[0]).remove();
+            // $(e).parent()[0].style.display = "none";
+        }
+    };
+    var url = 'https://jsonplaceholder.typicode.com/posts/' + $(e).data('index');
+    xhttp.open("DELETE", url, true);
+    xhttp.send();
 }

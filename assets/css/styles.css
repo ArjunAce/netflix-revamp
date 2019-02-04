@@ -8,6 +8,11 @@ html{
     -o-transition:      all 1s ease;
 }
 
+input, label{
+    font-weight: 400 !important;
+    font-family: 'Source Sans Pro', Arial, sans-serif !important;
+}
+
 body{
     /*background: linear-gradient(to right top, #8192ac, #4ca5c2, #00b7b5, #3bc382, #9ac43c);*/
     background: #282828;
@@ -43,6 +48,7 @@ body{
     /*width: 32px;*/
     /*transition: 1s;*/
     cursor: pointer;
+    height: 100px;
 }
 
 .tools img + img {
@@ -97,8 +103,8 @@ body{
 .textBoxStyleMinimal{
     color: white;
     box-shadow: none;
-    font-size: 2.5rem;
-    background: #ffffff11;
+    font-size: 38px;
+    /*background: #ffffff11;*/
     /*border: 1px solid #4c4c4c;*/
     background: transparent
 }
@@ -123,7 +129,6 @@ body{
     text-align: center;
     background-color: #337ab7;
     color: #fff;
-    vertical-align: middle;
     cursor: pointer;
     border: 1px solid transparent;
     padding: 5px 10px;
@@ -139,7 +144,7 @@ body{
 
 .customButtonMinimal{
     background-color: transparent;
-    font-size: 2.5rem;
+    font-size: 38px;
     border: 1px solid white;
 }
 .customButtonMinimal:hover{
@@ -150,7 +155,7 @@ body{
 
 #deletePanel label{
     color: #cbd0d555;
-    /*font-size: 1.4rem;*/
+    font-size: 38px;
     padding: 2% 0;
     display: block;
 }
@@ -184,11 +189,28 @@ body{
     cursor: pointer;
     max-width:100%;
     max-height:100%;
+    transition: 0.5s;
 }
 
 .movieRow + .movieRow {
     margin-top: 2%;
 }
+
+
+@media screen and (max-width: 1240px) {
+    .tools img{
+        height: 8vw;
+    }
+
+    .customTextBox {
+        font-size: 1.2rem;
+    }
+
+    .textBoxStyleMinimal, .customButtonMinimal, #deletePanel label {
+        font-size: 3vw;
+    }
+}
+
 
 
 @media screen and (max-width: 380px) {
@@ -210,33 +232,19 @@ body{
         padding: 0 0.2rem;
     }
 
-    /*.customButton {
-        background-color: #337ab7;
-    }*/
-
-    .tools img{
-        /*transition: 1s;*/
-        transform: matrix(0.5, 0, 0, 0.5, 0, 0);
+    .tools img + img {
+        height: 32px;
     }
 
     .tools img + img {
-        margin-left: -5% !important;
+        margin-left: 0% !important;
     }
+
+
 
     .customButtonMinimal{
         font-size: 1rem;
     }
 
 
-}
-
-@media screen and (min-width: 1240px) {
-    .tools img{
-        /*transition: 1s;*/
-        transform: matrix(1.2, 0, 0, 1.2, 0, 0);
-    }
-
-    .tools img + img {
-        margin-left: 15% !important;
-    }
 }
