@@ -58,7 +58,7 @@
     .logo {
         font: 50px 'Arial Narrow', sans-serif;
         letter-spacing: -4px;
-        transition: 1s  ;
+        transition: 0.3s;
     }
 
     .logo span:before, .logo span:after {
