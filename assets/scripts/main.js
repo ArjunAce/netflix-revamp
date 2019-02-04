@@ -71,17 +71,20 @@ var data = [
     }
 ];
 var posterSrc = '';
-var actionMode;
+var actionMode = 'search';
 var imageData;
 
 
 function init(){
-    actionClickHandler({id: 'search'});
+    actionClickHandler({id: actionMode});
     // getMovieData();
     $('input').focus(function(){
         $(this).data('placeholder', $(this).attr('placeholder')).attr('placeholder','');
     }).blur(function(){
         $(this).attr('placeholder',$(this).data('placeholder'));
+    });
+    $( window ).resize(function() {
+        actionClickHandler({id: actionMode});
     });
     appendMovieItems(data);
     attachHoverProperties();
