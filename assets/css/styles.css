@@ -7,6 +7,7 @@ body{
     transition: all 0.9s;
     font-family: 'Source Sans Pro', Arial, sans-serif;
     min-width: 380px;
+    text-align: center;
 }
 #mainBody{
     margin-top: 1%;
@@ -195,7 +196,6 @@ body{
     }
 
     .tools img + img {
-        /*margin-left: 15% !important;*/
-        margin-left: 30% !important;
+        margin-left: 15% !important;
     }
 }
