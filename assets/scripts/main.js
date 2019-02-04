@@ -70,12 +70,15 @@ var data = [
         "release_date": "2019-01-25"
     }
 ];
+var posterSrc = '';
+var actionMode;
 
 function init(){
     actionClickHandler({id: 'search'});
 }
 
 function actionClickHandler(e){
+    actionMode = e.id;
     var i, selectedPanelId, panelReference, parentReference;
     var iconSet = $(".tools img");
     for (i = 0; i < iconSet.length; i++) {
@@ -138,9 +141,9 @@ function func() {
                 } else{
                     newMovieItem = $(".dummyMovieItem").clone()[0];
                 }
-                // newMovieItem.children[0].innerText = a[i].poster_path;
-                newMovieItem.children[1].innerText = a[i].original_title;
-                newMovieItem.children[2].innerText = a[i].release_date.substring(0, 4);
+                $(newMovieItem).find('img')[0].setAttribute('src', "https://image.tmdb.org/t/p/w185" + a[i].poster_path);
+                $(newMovieItem).find('.movieName')[0].innerText = a[i].original_title;
+                $(newMovieItem).find('.movieYear')[0].innerText = a[i].release_date.substring(0, 4);
                 newMovieRow.appendChild(newMovieItem);
             }
         // }
@@ -150,10 +153,63 @@ function func() {
     // xhttp.send();
 
     $(".movieItem img").hover(function () {
-        var a = $(this);
-        $(this)[0].setAttribute('src', 'assets/icons/trash-96.png');
+        if (actionMode !== 'delete')
+            return;
+        var a = $(this)[0];
+        posterSrc = a.attributes.src.value;
+        a.setAttribute('src', 'assets/icons/trash-185_new.png');
+    }, function () {
+        if (actionMode !== 'delete')
+            return;
+        var a = $(this)[0];
+        a.setAttribute('src', posterSrc);
     });
 
 }
 
 
+function func1() {
+    var i, newMovieRow, newMovieItem;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+                var a  = xhttp.responseText;
+                a = JSON.parse(a);
+                a = a.results.slice(0, 10);
+            var movieLibraryElement = $("#movieLibrary")[0];
+            // var dummyMovieItemElement = $(".dummyMovieItem")[0];
+            for (i = 0; i < a.length; i++) {
+                if(i%10 == 0){
+                    newMovieRow = $("#dummyMovieRow").clone()[0];
+                    newMovieRow.classList.add('realClass');
+                    newMovieRow.style.display = 'block';
+                    movieLibraryElement.appendChild(newMovieRow);
+                    newMovieItem = $(".realClass .dummyMovieItem")[i];
+                } else{
+                    newMovieItem = $(".dummyMovieItem").clone()[0];
+                }
+                // newMovieItem.children[0].innerText = a[i].poster_path;
+                newMovieItem.children[1].innerText = a[i].original_title;
+                newMovieItem.children[2].innerText = a[i].release_date.substring(0, 4);
+                newMovieRow.appendChild(newMovieItem);
+            }
+        }
+    };
+    var url = 'https://api.themoviedb.org/3/discover/movie?api_key=6a469373bd2698c12b609d870b56e961&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1;'
+    xhttp.open("GET", url, true);
+    xhttp.send();
+
+    $(".movieItem img").hover(function () {
+        if (actionMode !== 'delete')
+            return;
+        var a = $(this)[0];
+        posterSrc = a.attributes.src.value;
+        a.setAttribute('src', 'assets/icons/trash-96.png');
+    }, function () {
+        if (actionMode !== 'delete')
+            return;
+        var a = $(this)[0];
+        a.setAttribute('src', posterSrc);
+    });
+
+}
