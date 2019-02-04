@@ -229,12 +229,7 @@ function addMovieHandler(e) {
     newMovieNameValue = $('#newMovieName')[0].value.trim();
     isValidYear = getIsValidYear($('#newMovieYear')[0]);
     if(imageData.indexOf('data:image') === 0  && newMovieNameValue && isValidYear){
-        createNodeAndAppend(imageData, newMovieNameValue, isValidYear[0]);
-        attachHoverProperties();
-        $('#newMovieName')[0].value = '';
-        $('#newMovieYear')[0].value = '';
-        $('#uploadPhoto')[0].value = '';
-        fileUploadHandler();
+        postMovie(newMovieNameValue, isValidYear);
     } else {
         if(imageData.indexOf('data:image') !== 0){
             $($('#uploadPhotoLabel')[0]).data('placeholder', 'Invalid file type');
@@ -252,6 +247,28 @@ function addMovieHandler(e) {
 function getIsValidYear(e) {
     var regexForYear = new RegExp('^0*(19[0-8][0-9]|199[0-9]|200[0-9]|201[0-9])$');
     return e.value.match(regexForYear);
+}
+
+function postMovie(newMovieNameValue, isValidYear) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 201) {
+            createNodeAndAppend(imageData, newMovieNameValue, isValidYear[0]);
+            attachHoverProperties();
+            $('#newMovieName')[0].value = '';
+            $('#newMovieYear')[0].value = '';
+            $('#uploadPhoto')[0].value = '';
+            fileUploadHandler();
+        }
+    };
+    var url = 'https://jsonplaceholder.typicode.com/posts/';
+    var body = {
+        posterSrc: imageData,
+        movieName: newMovieNameValue,
+        movieYear: isValidYear[0]
+    };
+    xhttp.open("POST", url, true);
+    xhttp.send(JSON.stringify(body));
 }
 
 function createNodeAndAppend(imageData, newMovieNameValue, yearOfRelease) {
