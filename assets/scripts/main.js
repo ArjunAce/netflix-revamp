@@ -77,7 +77,13 @@ var imageData = '';
 
 function init(){
     actionClickHandler({id: actionMode});
-    // getMovieData();
+    //Actual call to server
+    getMovieData();
+    //For Mock data
+    /*appendMovieItems(data);
+    attachHoverProperties();*/
+
+
     $('#addPanel input.textBoxStyleMinimal').focus(function(){
         $(this)[0].value = '';
         $(this).data('placeholder', $(this).attr('placeholder')).attr('placeholder','');
@@ -87,8 +93,6 @@ function init(){
     $( window ).resize(function() {
         actionClickHandler({id: actionMode});
     });
-    appendMovieItems(data);
-    attachHoverProperties();
 }
 
 function actionClickHandler(e){
