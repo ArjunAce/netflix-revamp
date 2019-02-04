@@ -75,6 +75,9 @@ var actionMode;
 
 function init(){
     actionClickHandler({id: 'search'});
+    // getMovieData();
+    appendMovieItems(data);
+    attachHoverProperties();
 }
 
 function actionClickHandler(e){
@@ -96,62 +99,48 @@ function actionClickHandler(e){
                 parentReference.appendChild(panelReference);
                 panelReference.style.maxHeight = panelReference.scrollHeight + "px";
             }
-        // }
     }
-
-/*
-    e.classList.toggle("active");
-    // var panelReference = e.nextElementSibling;
-    var selectedPanelId = '#' + e.id + 'Panel';
-    var panelReference = $(selectedPanelId)[0];
-    if (panelReference.style.maxHeight){
-        panelReference.style.maxHeight = null;
-    } else {
-        panelReference.style.maxHeight = panelReference.scrollHeight + "px";
-    }
-*/
 
 }
 
-function func() {
-    var i, newMovieRow, newMovieItem;
+function getMovieData() {
     var xhttp = new XMLHttpRequest();
-    // xhttp.onreadystatechange = function() {
-    //     if (this.readyState == 4 && this.status == 200) {
-            // Typical action to be performed when the document is ready:
-/*
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var responseData = JSON.parse(xhttp.responseText);
+            responseData = responseData.results.slice(0, 10);
+            appendMovieItems(responseData);
+            attachHoverProperties();
+        }
+    };
+    var apiKey = 'api_key=6a469373bd2698c12b609d870b56e961';
+    var filters = '&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1';
+    var url = 'https://api.themoviedb.org/3/discover/movie?' + apiKey + filters;
+    xhttp.open("GET", url, true);
+    xhttp.send();
+}
 
-            var a  = xhttp.responseText;
-            a = JSON.parse(a);
-            a = a.results.slice(0, 10);
-*/
+function appendMovieItems(responseData) {
+    var i, newMovieRow, newMovieItem;
+    var movieLibraryElement = $("#movieLibrary")[0];
+    for (i = 0; i < responseData.length; i++) {
+        if(i%10 == 0){
+            newMovieRow = $("#dummyMovieRow").clone()[0];
+            newMovieRow.classList.add('realClass');
+            newMovieRow.style.display = 'block';
+            movieLibraryElement.appendChild(newMovieRow);
+            newMovieItem = $(".realClass .dummyMovieItem")[i];
+        } else{
+            newMovieItem = $(".dummyMovieItem").clone()[0];
+        }
+        $(newMovieItem).find('img')[0].setAttribute('src', "https://image.tmdb.org/t/p/w185" + responseData[i].poster_path);
+        $(newMovieItem).find('.movieName')[0].innerText = responseData[i].original_title;
+        $(newMovieItem).find('.movieYear')[0].innerText = responseData[i].release_date.substring(0, 4);
+        newMovieRow.appendChild(newMovieItem);
+    }
+}
 
-
-            a = data;
-            var movieLibraryElement = $("#movieLibrary")[0];
-            // var dummyMovieRowElement = $("#dummyMovieRow")[0];
-            // var dummyMovieItemElement = $(".dummyMovieItem")[0];
-            for (i = 0; i < a.length; i++) {
-                if(i%10 == 0){
-                    newMovieRow = $("#dummyMovieRow").clone()[0];
-                    newMovieRow.classList.add('realClass');
-                    newMovieRow.style.display = 'block';
-                    movieLibraryElement.appendChild(newMovieRow);
-                    newMovieItem = $(".realClass .dummyMovieItem")[i];
-                } else{
-                    newMovieItem = $(".dummyMovieItem").clone()[0];
-                }
-                $(newMovieItem).find('img')[0].setAttribute('src', "https://image.tmdb.org/t/p/w185" + a[i].poster_path);
-                $(newMovieItem).find('.movieName')[0].innerText = a[i].original_title;
-                $(newMovieItem).find('.movieYear')[0].innerText = a[i].release_date.substring(0, 4);
-                newMovieRow.appendChild(newMovieItem);
-            }
-        // }
-    // };
-    var url = 'https://api.themoviedb.org/3/discover/movie?api_key=6a469373bd2698c12b609d870b56e961&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1;'
-    // xhttp.open("GET", url, true);
-    // xhttp.send();
-
+function attachHoverProperties() {
     $(".movieItem img").hover(function () {
         if (actionMode !== 'delete')
             return;
@@ -164,54 +153,6 @@ function func() {
         var a = $(this)[0];
         a.setAttribute('src', posterSrc);
     });
-
-}
-
-
-function func1() {
-    var i, newMovieRow, newMovieItem;
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-                var a  = xhttp.responseText;
-                a = JSON.parse(a);
-                a = a.results.slice(0, 10);
-            var movieLibraryElement = $("#movieLibrary")[0];
-            // var dummyMovieItemElement = $(".dummyMovieItem")[0];
-            for (i = 0; i < a.length; i++) {
-                if(i%10 == 0){
-                    newMovieRow = $("#dummyMovieRow").clone()[0];
-                    newMovieRow.classList.add('realClass');
-                    newMovieRow.style.display = 'block';
-                    movieLibraryElement.appendChild(newMovieRow);
-                    newMovieItem = $(".realClass .dummyMovieItem")[i];
-                } else{
-                    newMovieItem = $(".dummyMovieItem").clone()[0];
-                }
-                // newMovieItem.children[0].innerText = a[i].poster_path;
-                newMovieItem.children[1].innerText = a[i].original_title;
-                newMovieItem.children[2].innerText = a[i].release_date.substring(0, 4);
-                newMovieRow.appendChild(newMovieItem);
-            }
-        }
-    };
-    var url = 'https://api.themoviedb.org/3/discover/movie?api_key=6a469373bd2698c12b609d870b56e961&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1;'
-    xhttp.open("GET", url, true);
-    xhttp.send();
-
-    $(".movieItem img").hover(function () {
-        if (actionMode !== 'delete')
-            return;
-        var a = $(this)[0];
-        posterSrc = a.attributes.src.value;
-        a.setAttribute('src', 'assets/icons/trash-96.png');
-    }, function () {
-        if (actionMode !== 'delete')
-            return;
-        var a = $(this)[0];
-        a.setAttribute('src', posterSrc);
-    });
-
 }
 
 function onKeyUpHandler() {

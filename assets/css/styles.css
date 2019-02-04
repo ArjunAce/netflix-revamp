@@ -144,6 +144,10 @@ body{
     overflow: hidden;
 }
 
+.movieItem h5{
+    color: #f4c12a;
+}
+
 .movieItem img{
     cursor: pointer;
     max-width:100%;
