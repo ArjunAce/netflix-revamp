@@ -194,9 +194,12 @@ function deleteMovie(e) {
 }
 
 function fileUploadHandler(){
-    var fileName = $('#uploadPhoto')[0].files[0].name;
-    $($('#uploadPhotoLabel')[0]).attr('placeholder', fileName);
-
+    var labelText = 'No image selected';
+    if($('#uploadPhoto')[0].files.length !== 0) {
+        labelText = $('#uploadPhoto')[0].files[0].name;
+        $($('#uploadPhotoLabel')[0]).data('placeholder', labelText)
+    }
+    $($('#uploadPhotoLabel')[0]).attr('placeholder', labelText).data('placeholder', labelText);
 }
 
 function openFileUploadDialog(){
