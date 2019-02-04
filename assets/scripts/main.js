@@ -197,7 +197,7 @@ function fileUploadHandler(){
     var labelText = 'No image selected';
     if($('#uploadPhoto')[0].files.length !== 0) {
         labelText = $('#uploadPhoto')[0].files[0].name;
-        $($('#uploadPhotoLabel')[0]).data('placeholder', labelText)
+        $($('#uploadPhotoLabel')[0]).data('placeholder', labelText);
     }
     $($('#uploadPhotoLabel')[0]).attr('placeholder', labelText).data('placeholder', labelText);
 }
@@ -205,3 +205,11 @@ function fileUploadHandler(){
 function openFileUploadDialog(){
     $('#uploadPhoto').trigger('click');
 }
+
+function getImageData(file) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        return e.target.result;
+    };
+    reader.readAsDataURL(file);
+};
