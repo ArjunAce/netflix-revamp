@@ -11,12 +11,16 @@
     <script src="assets/scripts/main.js"></script>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/layoutStyles.css">
+    <link rel="stylesheet" href="assets/css/logo_styles.css">
 </head>
 <body  onload="init()">
 <div id="mainBody">
     <div id="mainContent" class="row">
         <div class="col-12">
-            <label  onclick="func(this)">Movies Home</label>
+            <label  class="logo" onclick="func(this)">
+                    <span class="primary">MOVIES</span>
+                    <span class="secondary">HOME</span>
+            </label>
         </div>
         <div>
             <div class="row tools">
@@ -25,12 +29,12 @@
                 <img id="delete" alt="Delete Movie" onclick="actionClickHandler(this)" src="assets/icons/del-movie-96.png">
                 <div id="panelParent">
                     <div  id="searchPanel" class="content" style="max-height: fit-content">
-                        <input class="customTextBox" name="searchBar" id="searchBar" placeholder="Enter search text here">
+                        <input class="customTextBox" name="searchBar" id="searchBar" onkeyup="onKeyUpHandler()" placeholder="Enter search text here">
                     </div>
                     <div id="addPanel" class="content">
-                        <input class="customTextBox smallBox" name="titleInput" placeholder="Movie name">
-                        <input class="customTextBox smallBox" name="titleInput" placeholder="Movie year">
-                        <input class="customTextBox smallBox" name="titleInput" placeholder="Enter movie name">
+                        <input class="customTextBox smallBox" name="titleInput" placeholder="Poster URL">
+                        <input class="customTextBox smallBox" name="titleInput" placeholder="Year">
+                        <input class="customTextBox smallBox" name="titleInput" placeholder="Year">
                         <input class="customButton" type="button" value="Add Movie">
                     </div>
                     <div id="deletePanel" class="content">
