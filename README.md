@@ -1,5 +1,5 @@
 # MoviesHome
-A simple Webpage using vanilla JS showing Movie list
+A simple Webpage using JS and jQuery toshow Movie list
 
 NOTE:
 To avoid CORS error,use the following command to start Google Chrome in CORS disabled mode
