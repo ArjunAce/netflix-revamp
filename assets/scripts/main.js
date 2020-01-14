@@ -28,7 +28,9 @@ function init(){
     });
     /* window resize event handler */
     $( window ).resize(function() {
-        actionClickHandler({id: actionMode});
+        if (!$("#searchBar")[0].is(":focus")) {
+            actionClickHandler({id: actionMode});
+        }
     });
 }
 
