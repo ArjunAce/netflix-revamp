@@ -18,6 +18,8 @@
   "homepage": "https://github.com/ArjunAce/MoviesHome#readme",
   "dependencies": {},
   "devDependencies": {
+    "css-loader": "^4.3.0",
+    "style-loader": "^1.2.1",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   }
