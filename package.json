@@ -4,7 +4,7 @@
   "description": "A simple UI showing movie data fetched from an open source API",
   "main": "index.js",
   "scripts": {
-    "start": "webpack"
+    "start": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
