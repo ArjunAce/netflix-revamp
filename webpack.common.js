@@ -2,8 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        main: './src/index.js',
-        vendor: './src/vendor.js'
+        main: './src/index.js'
     },
     plugins: [
         new HtmlWebpackPlugin({ template: './src/index.html' })
@@ -15,12 +14,12 @@ module.exports = {
                 use: ['html-loader']
             },
             {
-                test: /\.(svg|png|jpg|gif)$/,
+                test: /\.(svg|png|jpg|gif|woff2|woff|otf|ttf)$/,
                 use: {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[hash].[ext]',
-                        outputPath: 'assets'
+                        outputPath: 'static'
                     }
                 }
             }
