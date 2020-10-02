@@ -1,0 +1,9 @@
+@import "fonts";
+@import "reset";
+@import "_variables";
+@import "_mixins";
+
+h1 {
+  font-family: "B612";
+  color: $primaryColor;
+}
