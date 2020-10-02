@@ -9,49 +9,49 @@ section.gallery {
     display: flex;
     flex-direction: column;
   }
-}
-.genre-container {
-  color: #fff;
-  margin-bottom: 20px;
-  .genre-label {
-    font-size: 24px;
-  }
-  .carousel {
-    position: relative;
-    .arrow {
-      position: absolute;
-      top: 50%;
-      right: 0;
-      width: 40px;
-      height: 40px;
-      background: url(./../assets/images/arrow.svg) center no-repeat;
-      background-size: cover;
-      cursor: pointer;
-      margin-top: -44px;
-      &.left {
-        left: 0;
-        transform: rotate(180deg);
-      }
+  .genre-container {
+    color: #fff;
+    margin-bottom: 20px;
+    .genre-label {
+      font-size: 24px;
     }
-    ul {
-      display: flex;
-      overflow-x: auto;
-      scrollbar-width: none;
-      &::-webkit-scrollbar {
-        display: none;
+    .carousel {
+      position: relative;
+      .arrow {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 40px;
+        height: 40px;
+        background: url(./../assets/images/arrow.svg) center no-repeat;
+        background-size: cover;
+        cursor: pointer;
+        margin-top: -44px;
+        &.left {
+          left: 0;
+          transform: rotate(180deg);
+        }
       }
-      padding: 24px 0;
-      .movie-element {
-        flex-shrink: 0;
-        margin-right: 20px;
-        .thumb {
-          width: 320px;
-          height: 200px;
-          background-size: cover;
-          background-position: center;
-          background-repeat: no-repeat;
-          border-radius: 12px;
-          margin-bottom: 24px;
+      ul {
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        padding: 24px 0;
+        .movie-element {
+          flex-shrink: 0;
+          margin-right: 20px;
+          .thumb {
+            width: 320px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 12px;
+            margin-bottom: 24px;
+          }
         }
       }
     }
