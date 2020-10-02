@@ -6,6 +6,7 @@
   font-size: 15px;
   color: $gray1;
   border-radius: 4px;
+  cursor: pointer;
   padding: 4px 28px;
 }
 
@@ -33,6 +34,7 @@ section.home {
       align-items: center;
       img {
         width: 40px;
+        margin-right: 20px;
       }
       a {
         font-size: 17px;
@@ -73,5 +75,23 @@ section.home {
   .cta {
     display: inline;
     background-color: $primaryColor;
+  }
+}
+.carousel-indicators {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  span {
+    width: 70px;
+    height: 3px;
+    background-color: #fff4;
+    border-radius: 2px;
+    cursor: pointer;
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+    &.active {
+      background-color: #fff;
+    }
   }
 }
