@@ -1,4 +1,5 @@
 @import "_variables";
+@import "mixins";
 
 section.about {
   height: 100vh;
@@ -39,6 +40,7 @@ section.about {
       margin-bottom: 24px;
     }
     .button.primary {
+      @include button;
       display: inline;
       background-color: $primaryColor;
     }

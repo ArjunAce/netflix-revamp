@@ -1,8 +1,19 @@
 import React from "react";
-import styles from './App.module.scss';
+import Home from './Home'
+import Gallery from './Gallery'
+import About from './About'
+import Footer from './Footer'
+import styles from './../styles/app.module.scss';
 
 const App = () => {
-  return <h1 className={styles['title']}>Hi from React App</h1>;
+  return (
+    <React.Fragment>
+      <Home />
+      <Gallery />
+      <About />
+      <Footer />
+    </React.Fragment>
+  );
 };
 
 export default App;

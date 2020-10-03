@@ -1,12 +1,5 @@
-@import "_variables";
-
-.button {
-  font-size: 15px;
-  color: $gray1;
-  border-radius: 4px;
-  cursor: pointer;
-  padding: 4px 28px;
-}
+@import "variables";
+@import "mixins";
 
 section.home {
   height: 100vh;
@@ -43,6 +36,7 @@ section.home {
       display: flex;
       align-items: center;
       .button {
+        @include button;
         background-color: #656566;
         margin-right: 15px;
         &.primary {
@@ -69,6 +63,7 @@ section.home {
       margin-bottom: 16px;
     }
     .cta {
+      @include button;
       display: inline;
       background-color: $primaryColor;
     }
