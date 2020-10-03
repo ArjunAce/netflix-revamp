@@ -28,7 +28,16 @@ module.exports = merge(commonConfig, {
                 test: /\.scss$/,
                 use: [
                     MiniCssExtractPlugin.loader, // 3. Load extracted and minified CSS in head
-                    'css-loader',   // 2. Turns css into commonjs
+                    {
+                        loader: 'css-loader',   // 2. Turns css into commonjs
+                        options: {
+                            importLoaders: 1,
+                            modules: {
+                                auto: true,
+                                localIdentName: '[path][name]__[local]--[hash:base64:5]',
+                            },
+                        }
+                    },
                     'sass-loader' // 1. Turns scss to css
                 ]
             }

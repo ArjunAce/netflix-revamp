@@ -14,7 +14,16 @@ module.exports = merge(commonConfig, {
                 test: /\.scss$/,
                 use: [
                     'style-loader', // 3. Inject styles into DOM
-                    'css-loader',   // 2. Turns css into commonjs
+                    {
+                        loader: 'css-loader',   // 2. Turns css into commonjs
+                        options: {
+                            importLoaders: 1,
+                            modules: {
+                                auto: true,
+                                localIdentName: "[name]_[local]"
+                            },
+                        }
+                    },
                     'sass-loader' // 1. Turns scss to css
                 ]
             }
