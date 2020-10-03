@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import appStyles from './../styles/app.module.scss';
 import styles from './../styles/home.module.scss';
 import logo from './../assets/images/logo.png';
+import dummyData from './../assets/dummy_shows.json';
 
 const Home = () => {
+    const data = dummyData.results.slice(5, 10);
+    const [activeSlide, setActiveSlide] = useState(0);
+
     return (
         <section className={styles['home']}>
             <div className={`${appStyles['container']} ${styles['container']}`}>
@@ -22,17 +26,28 @@ const Home = () => {
                         <div className={`${styles['button']} ${styles['primary']}`}> Subscribe</div>
                     </div>
                 </nav >
-                <div className={styles['main-content']}>
-                    <h2>HOUSE OF CARDS</h2>
-                    <h4>A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.</h4>
-                    <div className={styles['cta']} > Watch</div >
+                <div className={styles['slides']}>
+                    {
+                        data.map((item, index) => (
+                            <div className={styles['slide-content']} key={index} style={{
+                                backgroundImage: `linear-gradient(#111c, #111c), url(https://image.tmdb.org/t/p/original/${item['backdrop_path']})`,
+                                marginLeft: index === 0 ? `${activeSlide * -100}%` : null
+                            }}>
+                                <div className={`${appStyles['container']}`}>
+                                    <h2>{item.name}</h2>
+                                    <h4>{item.overview}</h4>
+                                    <div className={styles['cta']}>Watch</div>
+                                </div>
+                            </div>
+                        ))
+                    }
                 </div>
                 <div className={styles['carousel-indicators']}>
-                    <span className={styles['active']} ></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    {
+                        data.map((item, index) => (
+                            <span className={activeSlide === index ? styles['active'] : null} key={index} onClick={setActiveSlide.bind(this, index)}></span>
+                        ))
+                    }
                 </div>
             </div>
         </section>
