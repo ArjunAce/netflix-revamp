@@ -12,10 +12,10 @@ const Gallery = () => {
     ];
     const [carouselPos, setCarouselPos] = useState(Array(carouselData.length).fill(0));
     const calculateCarouselPos = (index, direction) => {
-        const tempPos = carouselPos;
-        tempPos[index] += direction === 1 ? 1 : -1;
+        const tempPos = [...carouselPos];
+        tempPos[index] += direction;
         console.log(tempPos);
-        setCarouselPos[tempPos];
+        setCarouselPos(tempPos);
     }
 
 
