@@ -5,7 +5,7 @@ import logo from './../assets/images/logo.png';
 import dummyData from './../assets/dummy_shows.json';
 
 const Home = () => {
-    const data = dummyData.results.slice(5, 10);
+    const data = dummyData.results.slice(0, 5);
     const [activeSlide, setActiveSlide] = useState(0);
 
     return (
