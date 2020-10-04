@@ -3,55 +3,31 @@ import appStyles from './../styles/app.module.scss';
 import styles from './../styles/footer.module.scss';
 
 const Footer = () => {
+    const footerData = [
+        { footerGroupName: 'For users and partners', footerItems: ["All about subscriptions", "FAQ", "Enter a promo code", "Agreement", "Policy"] },
+        { footerGroupName: '', footerItems: ["About project", "Bonus and gifts", "Partnership", "Vacancy", "Central audience"] },
+        { footerGroupName: 'On devices', footerItems: ["TV and mediaplayers", "Mobile devices", "PC", "Connect a TV"] },
+        { footerGroupName: 'User support', footerItems: ["Questions?", "All contacts", "Start live chat",] },
+        { footerGroupName: 'Social media', footerItems: ["Facebook", "Twitter", "Instagram", "Youtube",] }
+    ];
     return (
         <section className={styles['footer']}>
             <div className={`${appStyles['container']} ${styles['container']}`}>
                 <ul className={styles['footer-groups']}>
-                    <li className={styles['group']}>
-                        <div className={styles['group-name']}>For users and partners</div>
-                        <ul className={styles['two-column']}>
-                            <div>
-                                <li>All about subscriptions</li>
-                                <li>FAQ</li>
-                                <li>Enter a promo code</li>
-                                <li>Agreement</li>
-                                <li>Policy</li>
-                            </div>
-                            <div>
-                                <li>About project</li>
-                                <li>Bonus and gifts</li>
-                                <li>Partnership</li>
-                                <li>Vacancy</li>
-                                <li>Central audience</li>
-                            </div>
-                        </ul>
-                    </li>
-                    <li className={styles['group']}>
-                        <div className={styles['group-name']}>On devices</div>
-                        <ul>
-                            <li>TV and mediaplayers</li>
-                            <li>Mobile devices</li>
-                            <li>PC</li>
-                            <li>Connect a TV</li>
-                        </ul>
-                    </li>
-                    <li className={styles['group']}>
-                        <div className={styles['group-name']}>User support</div>
-                        <ul>
-                            <li>Questions?</li>
-                            <li>All contacts</li>
-                            <li>Start live chat</li>
-                        </ul>
-                    </li>
-                    <li className={styles['group']}>
-                        <div className={styles['group-name']}>Social media</div>
-                        <ul>
-                            <li>Facebook</li>
-                            <li>Twitter</li>
-                            <li>Instagram</li>
-                            <li>Youtube</li>
-                        </ul>
-                    </li>
+                    {
+                        footerData.map((footerGroup, index) => (
+                            <li className={styles['group']} key={index}>
+                                <div className={styles['group-name']}>{footerGroup.footerGroupName}</div>
+                                <ul>
+                                    {
+                                        footerGroup.footerItems.map((footerItem, idx) => (
+                                            <li key={idx}>{footerItem}</li>
+                                        ))
+                                    }
+                                </ul>
+                            </li>
+                        ))
+                    }
                 </ul>
             </div>
         </section>
