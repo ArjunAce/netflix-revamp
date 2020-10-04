@@ -30,7 +30,7 @@ const Home = () => {
                     {
                         data.map((item, index) => (
                             <div className={styles['slide-content']} key={index} style={{
-                                backgroundImage: `linear-gradient(#111c, #111c), url(https://image.tmdb.org/t/p/original/${item['backdrop_path']})`,
+                                backgroundImage: `linear-gradient(#111a, #111a), url(https://image.tmdb.org/t/p/original/${item['backdrop_path']})`,
                                 marginLeft: index === 0 ? `${activeSlide * -100}%` : null
                             }}>
                                 <div className={`${appStyles['container']}`}>
