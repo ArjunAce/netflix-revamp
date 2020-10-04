@@ -6,9 +6,10 @@ import dummyData from './../assets/dummy_shows.json';
 
 const Gallery = () => {
     const carouselData = [
-        { carouselName: 'Popular', data: dummyData.results.slice(10, 17) },
-        { carouselName: 'New', data: dummyData.results.slice(18, 25) },
-        { carouselName: 'Trending Today', data: dummyData.results.slice(26, 33) }
+        { carouselName: 'Popular', data: dummyData.results.slice(5, 15) },
+        { carouselName: 'New', data: dummyData.results.slice(15, 25) },
+        { carouselName: 'Trending Today', data: dummyData.results.slice(25, 35), },
+        { carouselName: 'All Time Hits', data: dummyData.results.slice(35, 45), }
     ];
     const [carouselPos, setCarouselPos] = useState(Array(carouselData.length).fill(0));
     const calculateCarouselPos = (index, direction) => {
@@ -34,12 +35,13 @@ const Gallery = () => {
                                     </div>
                                     <div className={`${styles['arrow']} ${styles['right']}`}
                                         onClick={calculateCarouselPos.bind(this, index, 1)}
-                                        style={{ visibility: carouselPos[index] === carousel.data.length ? 'hidden' : 'visible' }}>
+                                        style={{ visibility: carouselPos[index] === (carousel.data.length - 5) ? 'hidden' : 'visible' }}>
                                     </div>
                                     <ul>
                                         {
                                             carousel.data.map((item, idx) => (
-                                                <li className={styles['movie-element']} key={idx}>
+                                                <li className={styles['movie-element']} key={idx}
+                                                    style={{ marginLeft: idx !== 0 ? '0' : `${carouselPos[index] * -370}px` }}>
                                                     <div className={styles['thumb']}
                                                         style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${item['backdrop_path']})` }}>
                                                     </div>
