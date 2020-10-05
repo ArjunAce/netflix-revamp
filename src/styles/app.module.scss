@@ -1,0 +1,19 @@
+@import "fonts";
+@import "reset";
+
+* {
+  font-family: B612, sans-serif;
+  font-size: 16px;
+}
+
+html {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.container {
+  width: 100%;
+  max-width: 1340px;
+  margin: auto;
+}

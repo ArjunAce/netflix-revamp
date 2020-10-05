@@ -1,70 +1,16 @@
-
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Movies Home - HTML, CSS, JS</title>
-    <script src="assets/scripts/jquery-3.3.1.min.js"></script>
-    <script src="assets/scripts/main.js"></script>
-    <link rel="shortcut icon" type="image/png" href="assets/icons/favicon.png">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/layoutStyles.css">
-    <link rel="stylesheet" href="assets/css/logo_styles.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Netflix Clone</title>
+    <link href="./dist/main.f34407a8175ee048909b.css" rel="stylesheet">
 </head>
-<body  onload="init()">
-<div id="mainBody">
-    <div id="mainContent" class="row">
-        <div class="col-12">
-            <label  class="logo">
-                    <span class="primary">MOVIES</span>
-                    <span class="secondary">HOME</span>
-            </label>
-        </div>
-        <div>
-            <div class="row tools">
-                <img id="search" alt="Search Movie" onclick="actionClickHandler(this)" src="assets/icons/search-movie-96.png">
-                <img id="add" alt="Add Movie" onclick="actionClickHandler(this)" src="assets/icons/add-movie-96.png">
-                <img id="delete" alt="Delete Movie" onclick="actionClickHandler(this)" src="assets/icons/del-movie-96.png">
-                <div id="panelParent">
-                    <div  id="searchPanel" class="content" style="max-height: fit-content">
-                        <input class="customTextBox textBoxStyleMinimal" name="searchBar" id="searchBar" onkeyup="searchKeyUpHandler()" placeholder="Enter search text here">
-                    </div>
-                    <div id="addPanel" class="content">
-                        <input type="file" accept="image/*" id="uploadPhoto" onchange="fileUploadHandler()">
-                        <input id="uploadPhotoLabel" class="customTextBox smallBox textBoxStyleMinimal" onclick="openFileUploadDialog()" placeholder="Upload poster">
-                        <input id="newMovieName" class="customTextBox smallBox textBoxStyleMinimal" name="titleInput" placeholder="Name">
-                        <input id="newMovieYear" class="customTextBox smallBox textBoxStyleMinimal" name="titleInput" placeholder="Year">
-                        <input class="customButton customButtonMinimal" type="button"  onclick="addMovieHandler()" value="Add Movie">
-                    </div>
-                    <div id="deletePanel" class="content">
-                        <label>To delete a movie, click on it's movie poster</label>
-                    </div>
-                </div>
-            </div>
-            <div id="movieLibrary">
-                <div style="display: none;" class="row movieRow" id="dummyMovieRow">
-                    <div class="col-2 movieItem dummyMovieItem">
-                        <img src="assets/icons/movie-ticket-96.png" onclick="deleteMovie(this)">
-                        <h5 class="movieName">Name</h5>
-                        <h6 class="movieYear">2018</h6>
-                    </div>
-                </div>
-                <div style="display: none;" id="nothingToShow">
-                    <div class="col-12">
-                        <img src="assets/icons/no_results.png" onclick="deleteMovie(this)">
-                        <h4 id="errorText">
-                            NO RESULTS FOUND! TRY A DIFFERENT SEARCH
-                        </h4>
-                    </div>
-                </div>
 
-        </div>
-    </div>
-
-
-</div>
+<body>
+    <div id="root"></div>
+    <script src="./dist/main.cae30ef79d452c51e293.bundle.js"></script>
 </body>
+
 </html>

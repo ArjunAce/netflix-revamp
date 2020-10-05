@@ -1,0 +1,105 @@
+@import "variables";
+@import "mixins";
+
+section.home {
+  height: 100vh;
+  background-color: #000;
+  padding: 40px 0;
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2;
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      img {
+        width: 40px;
+        margin-right: 20px;
+      }
+      a {
+        font-size: 17px;
+        color: $gray2;
+        margin-right: 40px;
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+    .nav-buttons {
+      display: flex;
+      align-items: center;
+      .button {
+        @include button;
+        background-color: #656566;
+        margin-right: 15px;
+        &.primary {
+          background-color: $primaryColor;
+        }
+      }
+    }
+  }
+  .slides {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    background-color: #000;
+    overflow: hidden;
+  }
+  .slide-content {
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: margin 1s;
+    h2 {
+      font-size: 70px;
+      font-weight: bold;
+    }
+    h4 {
+      max-width: 550px;
+      font-size: 14px;
+      color: $gray2;
+      margin-bottom: 24px;
+    }
+    .cta {
+      @include button;
+      display: inline;
+      background-color: $primaryColor;
+    }
+  }
+  .carousel-indicators {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 2;
+    span {
+      width: 70px;
+      height: 4px;
+      background-color: #fff4;
+      border-radius: 2px;
+      cursor: pointer;
+      &:not(:last-child) {
+        margin-right: 8px;
+      }
+      &.active {
+        background-color: #fff;
+      }
+    }
+  }
+}

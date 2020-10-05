@@ -1,0 +1,60 @@
+@import "_variables";
+
+section.gallery {
+  min-height: 100vh;
+  background-color: #000;
+  padding: 60px 0 40px;
+  .container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .genre-container {
+    color: #fff;
+    margin-bottom: 20px;
+    .genre-label {
+      font-size: 24px;
+    }
+    .carousel {
+      position: relative;
+      .arrow {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 40px;
+        height: 40px;
+        background: url(./../assets/images/arrow.svg) center no-repeat;
+        background-size: cover;
+        cursor: pointer;
+        margin-top: -44px;
+        &.left {
+          left: 0;
+          transform: rotate(180deg);
+        }
+      }
+      ul {
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width: none;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+        padding: 24px 0;
+        .movie-element {
+          flex-shrink: 0;
+          transition: all 0.5s ease-in-out;
+          margin-right: 20px;
+          .thumb {
+            width: 300px;
+            height: 190px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 12px;
+            margin-bottom: 24px;
+          }
+        }
+      }
+    }
+  }
+}
