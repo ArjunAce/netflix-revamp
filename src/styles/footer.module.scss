@@ -24,3 +24,9 @@ section.footer {
     }
   }
 }
+
+@media (max-width: 1380px) {
+  section.footer .group:nth-child(2) {
+    display: none;
+  }
+}

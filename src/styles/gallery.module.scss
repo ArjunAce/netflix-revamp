@@ -58,3 +58,9 @@ section.gallery {
     }
   }
 }
+
+@media (max-width: 1380px) {
+  section.gallery .genre-container .carousel ul .movie-element .thumb {
+    width: 295px;
+  }
+}
