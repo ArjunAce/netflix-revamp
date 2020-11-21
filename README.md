@@ -1,4 +1,4 @@
-# MoviesHome
+# Netflix Revamp
 A simple redesign of Netflix created in React.
 Data is hardcode.
 
